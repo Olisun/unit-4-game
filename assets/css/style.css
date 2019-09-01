@@ -77,6 +77,18 @@
   background-color: #2da5fb;
 }
 
+#YTS {
+  width: 130px;
+}
+
+#total-score {
+  float: right;
+  padding-bottom: 10px;
+  padding-left: -30px;
+  padding-right: 20px;
+  margin-top: -18px;
+}
+
 button {
   margin-left: 300px;
   margin-top: -400px;
@@ -88,4 +100,8 @@ button {
   color: white;
   font-family: Monaco, 'Courier New', monospace;
   font-size: 24px;
+}
+
+.num-test {
+  margin-top: 50px;
 }
