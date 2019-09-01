@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+}
+
+#backdrop {
+  height: 550px;
+  width: 750px;
+}
+
+.clearfix::after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.random-number-container {
+  float: left;
+  height: 100px;
+  width: 200px;
+  margin-right: 10px;
+  background-color: chartreuse;
+}
+
+.wins-losses-container {
+  float: left;
+  height: 100px;
+  width: 100px;
+  background-color: #2da5fb;
+  float: left;
+}
+
+.buttons-container {
+  width: 750px;
+  margin-top: 120px;
+}
+
+#ruby {
+  height: 60px;
+  width: 60px;
+  margin-left: 10px;
+  outline: 10px ridge #e0115f
+}
+
+#diamond {
+  height: 60px;
+  width: 60px;
+  margin-left: 30px;
+  outline: 10px ridge #70d1f4
+}
+
+#yellowThingy {
+  height: 60px;
+  width: 60px;
+  margin-left: 30px;
+  outline: 10px ridge #FFD700
+}
+
+#emerald {
+  height: 60px;
+  width: 60px;
+  margin-left: 30px;
+  outline: 10px ridge #50c878
+}
+
+.total-score-container {
+  float: left;
+  height: 50px;
+  width: 200px;
+  margin-top: 20px;
+  margin-right: 10px;
+  background-color: #2da5fb;
+}
