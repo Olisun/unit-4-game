@@ -6,8 +6,6 @@ $(document).ready(function() {
   var computerRandomNum = $('#random-number');
   var resetGame = $('#reset')
 
-
-
   function playGame() {
     var computerNum = [19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29];
     var computerGuess = computerNum[Math.floor(Math.random() * computerNum.length)];
@@ -30,9 +28,12 @@ $(document).ready(function() {
     var emeraldNumDom = $('#e-num-test');
 
     var totalScoreDom = $('#total-score');
+
     var wins = 0;
     var losses = 0;
+    var restart = 0;
 
+    totalScoreDom.text(restart);
     computerNumDom.text(computerGuess);
     rubyNumDom.text(rubyGuess);
     diamondNumDom.text(diamondGuess);
@@ -79,6 +80,7 @@ $(document).ready(function() {
       var emeraldNumDom = $('#e-num-test');
 
       var totalScoreDom = $('#total-score');
+
       var wins = 0;
       var losses = 0;
       var restart = 0;
