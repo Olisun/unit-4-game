@@ -3,8 +3,8 @@
     var diamond = $('#diamond');
     var yellowThingy = $('#yellowThingy');
     var emerald = $('#emerald');
-    var computerRandomNum = $('#random-number');
-    var resetGame = $('#reset')
+
+    var resetGame = $('#reset');
 
     function playGame() {
       var computerNum = [19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29];
@@ -56,17 +56,13 @@
         totalScoreDom.text(restart += emeraldGuess);
       });
 
-      function gameFishished() {
-        if (totalScoreDom.value === computerGuess) {
-          alert('You matched the Computer Number!')
-        } else if (totalScoreDom.value > computerGuess) {
-          alert('You went over! :-(')
-        }
+      if (totalScoreDom === computerGuess) {
+        alert('You matched the Computer Number!');
+      } else if (totalScoreDom.value > computerGuess) {
+        alert('You went over! :-(');
       }
-      gameFishished();
+
     }
-
-
 
     function newGame() {
       resetGame.on('click', function() {
@@ -119,21 +115,16 @@
           totalScoreDom.text(restart += emeraldGuess);
         });
 
-        function gameFishished() {
-          if (totalScoreDom.value === computerGuess) {
-            alert('You matched the Computer Number!')
-          } else if (totalScoreDom.value > computerGuess) {
-            alert('You went over! :-(')
-          }
+        if (totalScoreDom === computerGuess) {
+          alert('You matched the Computer Number!');
+        } else if (totalScoreDom.value > computerGuess) {
+          alert('You went over! :-(');
         }
-        gameFishished();
+
       })
     }
 
-
-
     playGame();
-
     newGame();
 
 

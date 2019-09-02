@@ -22,8 +22,8 @@
 }
 
 #random-number {
-  text-align: center;
   margin-top: 10px;
+  margin-left: 70px;
   font-size: 32px;
 }
 
@@ -32,6 +32,18 @@
   height: 100px;
   width: 100px;
   background-color: #2da5fb;
+  float: left;
+}
+
+#wins {
+  width: 43px;
+  margin: 0;
+  float: left;
+}
+
+#losses {
+  width: 55px;
+  margin: 0;
   float: left;
 }
 
@@ -85,7 +97,7 @@
   float: right;
   padding-bottom: 10px;
   padding-left: -30px;
-  padding-right: 20px;
+  padding-right: 50px;
   margin-top: -18px;
 }
 
