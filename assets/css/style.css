@@ -105,3 +105,27 @@ button {
 .num-test {
   margin-top: 50px;
 }
+
+#ruby-cheat {
+  width: 45px;
+  margin: 0;
+  float: left;
+}
+
+#diamond-cheat {
+  width: 69px;
+  margin: 0;
+  float: left;
+}
+
+#yellow-cheat {
+  width: 104px;
+  margin: 0;
+  float: left;
+}
+
+#emerald-cheat {
+  width: 64px;
+  margin: 0;
+  float: left;
+}
