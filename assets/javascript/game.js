@@ -32,10 +32,14 @@
       var wins = $('#wins-placeholder');
       var losses = $('#losses-placeholder');
       var totalScoreDom = $('#total-score');
+      var pointsForWin = 1;
+      var pointsForLosses = 1;
       var restart = 0;
+      var counter = 0;
+
 
       // This sets the "Your Total Score Is:" from the DOM at 0 at the start of each game.
-      totalScoreDom.text(restart);
+      // totalScoreDom.text(restart);
       // This sets the "Wins:" from the DOM at 0 at the start of each game.
       wins.text(restart);
       // This sets the "Losses:" from the DOM at 0 at the start of each game.
@@ -47,9 +51,12 @@
       yellowNumDom.text(yellowGuess);
       emeraldNumDom.text(emeraldGuess);
 
+
       // Onclick functions that add the point values assigned to each crystal to the total score counter.
       ruby.on("click", function() {
         totalScoreDom.text(restart += rubyGuess);
+        counter += rubyGuess;
+        document.getElementById('counter-test').innerText = counter;
       });
 
       diamond.on("click", function() {
@@ -64,14 +71,20 @@
         totalScoreDom.text(restart += emeraldGuess);
       });
 
-      if (totalScoreDom === computerGuess) {
-        wins.text(restart++);
-        alert('You matched the Computer Number!');
-      } else if (totalScoreDom.value > computerGuess) {
-        losses.text(restart++);
-        alert('You went over! :-(');
+      function gameOver() {
+        totalScoreDom = parseInt(totalScoreDom);
       }
+
+      gameOver()
+
+      if (typeof totalScoreDom == 'number') {
+        alert('true')
+      } else {
+        alert('false')
+      };
     }
+
+
 
     // function creates a new game after the user clicks on the reset button.
     function newGame() {
@@ -99,6 +112,8 @@
         var wins = $('#wins-placeholder');
         var losses = $('#losses-placeholder');
         var totalScoreDom = $('#total-score');
+        var pointsForWin = 1;
+        var pointsForLosses = 1;
         var restart = 0;
 
         totalScoreDom.text(restart);
@@ -127,13 +142,13 @@
           totalScoreDom.text(restart += emeraldGuess);
         });
 
-        if (totalScoreDom === computerGuess) {
-          wins.text(restart++);
-          alert('You matched the Computer Number!');
-        } else if (totalScoreDom.value > computerGuess) {
-          losses.text(restart++);
-          alert('You went over! :-(');
-        }
+        // if (totalScoreDom === computerGuess) {
+        //   wins.text(restart++);
+        //   alert('You matched the Computer Number!');
+        // } else if (totalScoreDom.value > computerGuess) {
+        //   losses.text(restart++);
+        //   alert('You went over! :-(');
+        // }
       })
     }
 
