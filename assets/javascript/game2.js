@@ -13,23 +13,25 @@ $(document).ready(function() {
     var computerNum = [19, 25, 33, 38, 45, 50, 53, 61, 69, 72, 75, 84, 86, 94, 99, 105, 111, 120];
     var computerGuess = computerNum[Math.floor(Math.random() * computerNum.length)];
     var computerNumDom = $('#random-number');
+
     // Assinging a random point value to each crystal at the start of each game.
     var rubyNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     var rubyGuess = rubyNum[Math.floor(Math.random() * rubyNum.length)];
-    var rubyNumDom = $('#r-num-test');
+    var rubyNumDom = $('#r-num-test'); // --> This sets me up to show the gem point value for reference during developement. Will hide when game ios deployed.
 
     var diamondNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     var diamondGuess = diamondNum[Math.floor(Math.random() * diamondNum.length)];
-    var diamondNumDom = $('#d-num-test');
+    var diamondNumDom = $('#d-num-test'); // --> This sets me up to show the gem point value for reference during developement. Will hide when game ios deployed.
 
     var yellowNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     var yellowGuess = rubyNum[Math.floor(Math.random() * yellowNum.length)];
-    var yellowNumDom = $('#y-num-test');
+    var yellowNumDom = $('#y-num-test'); // --> This sets me up to show the gem point value for reference during developement. Will hide when game ios deployed.
 
     var emeraldNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     var emeraldGuess = rubyNum[Math.floor(Math.random() * emeraldNum.length)];
-    var emeraldNumDom = $('#e-num-test');
+    var emeraldNumDom = $('#e-num-test'); // --> This sets me up to show the gem point value for reference during developement. Will hide when game ios deployed.
 
+    // Delcaring local variables.
     var wins = $('#wins-placeholder');
     var losses = $('#losses-placeholder');
     var totalScoreDom = $('#total-score');
@@ -53,23 +55,25 @@ $(document).ready(function() {
     yellowNumDom.text(yellowGuess);
     emeraldNumDom.text(emeraldGuess);
 
-    ruby.attr('pointValue', rubyGuess);
-    diamond.attr('pointValue2', diamondGuess);
-    yellowThingy.attr('pointValue3', yellowGuess);
-    emerald.attr('pointValue4', emeraldGuess);
+    // Assiging a point value attribute to I can map the random number generated above for each gem.
+    ruby.attr('rubyValue', rubyGuess);
+    diamond.attr('diamondValue', diamondGuess);
+    yellowThingy.attr('yellowThingyValue', yellowGuess);
+    emerald.attr('emeraldValue', emeraldGuess);
 
-
+    // Function to run when gem is clicked.
     ruby.on('click', function() {
-      var crystalPointVal = ($(this).attr('pointValue'));
-      crystalPointVal = parseInt(crystalPointVal);
-      counter += crystalPointVal;
+      // Using the this keyword maps the random number from the point value attribute above to the click function. Then I convert the attribute value from a string to a number with parse.
+      var rubyPointVal = ($(this).attr('rubyValue'));
+      rubyPointVal = parseInt(rubyPointVal);
+      counter += rubyPointVal;
       totalScoreDom.text(counter);
 
       if (counter === targetNumber) {
         alert('You Won!')
           // location.reload();
         counter = 0;
-        totalScoreDom.text(restart);
+        totalScoreDom.text(counter);
         playGame()
         winPoints++;
         wins.text(winPoints);
@@ -78,7 +82,7 @@ $(document).ready(function() {
         alert('You Loss!')
           // location.reload();
         counter = 0;
-        totalScoreDom.text(restart);
+        totalScoreDom.text(counter);
         playGame()
         lossPoints++;
         losses.text(lossPoints);
@@ -87,9 +91,9 @@ $(document).ready(function() {
     })
 
     diamond.on('click', function() {
-      var crystalPointVal2 = ($(this).attr('pointValue2'));
-      crystalPointVal2 = parseInt(crystalPointVal2);
-      counter += crystalPointVal2;
+      var diamondPointVal = ($(this).attr('diamondValue'));
+      diamondPointVal = parseInt(diamondPointVal);
+      counter += diamondPointVal;
       totalScoreDom.text(counter);
 
       if (counter === targetNumber) {
@@ -108,9 +112,9 @@ $(document).ready(function() {
     })
 
     yellowThingy.on('click', function() {
-      var crystalPointVal3 = ($(this).attr('pointValue3'));
-      crystalPointVal3 = parseInt(crystalPointVal3);
-      counter += crystalPointVal3;
+      var yellowThingyPointVal = ($(this).attr('yellowThingyValue'));
+      yellowThingyPointVal = parseInt(yellowThingyPointVal);
+      counter += yellowThingyPointVal;
       totalScoreDom.text(counter);
 
       if (counter === targetNumber) {
@@ -128,9 +132,9 @@ $(document).ready(function() {
     })
 
     emerald.on('click', function() {
-      var crystalPointVal4 = ($(this).attr('pointValue4'));
-      crystalPointVal4 = parseInt(crystalPointVal4);
-      counter += crystalPointVal4;
+      var emeraldPointVal = ($(this).attr('emeraldValue'));
+      emeraldPointVal = parseInt(emeraldPointVal);
+      counter += emeraldPointVal;
       totalScoreDom.text(counter);
 
       if (counter === targetNumber) {
