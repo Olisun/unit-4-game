@@ -8,6 +8,7 @@ $(document).ready(function() {
 
   // This function starts the inital game.
   function playGame() {
+
     // Using our friend math.floor-math.round to have the computer select a random number for the user to try and match.
     var computerNum = [19, 25, 33, 38, 45, 50, 53, 61, 69, 72, 75, 84, 86, 94, 99, 105, 111, 120];
     var computerGuess = computerNum[Math.floor(Math.random() * computerNum.length)];
@@ -32,10 +33,11 @@ $(document).ready(function() {
     var wins = $('#wins-placeholder');
     var losses = $('#losses-placeholder');
     var totalScoreDom = $('#total-score');
-    var pointsForWin = 1;
-    var pointsForLosses = 1;
+    var winPoints = 0;
+    var lossPoints = 0;
     var restart = 0;
     var counter = 0;
+    var targetNumber = computerGuess
 
 
     // This sets the "Your Total Score Is:" from the DOM at 0 at the start of each game.
@@ -45,43 +47,92 @@ $(document).ready(function() {
     // This sets the "Losses:" from the DOM at 0 at the start of each game.
     losses.text(restart);
     // These set the random numbers chosen from arrays above to the selected targets on the DOM. I added the crystals' numbers so I can reference them when building. I sill change the css display to none when deploying the final product so the user won't see them.
-    computerNumDom.text(computerGuess);
+    computerNumDom.text(targetNumber);
     rubyNumDom.text(rubyGuess);
     diamondNumDom.text(diamondGuess);
     yellowNumDom.text(yellowGuess);
     emeraldNumDom.text(emeraldGuess);
 
 
-    // Onclick functions that add the point values assigned to each crystal to the total score counter.
-    ruby.on("click", function() {
-      totalScoreDom.text(restart += rubyGuess);
-      counter += rubyGuess;
-      document.getElementById('counter-test').innerText = counter;
-    });
+    var crystals = $('#ruby');
+    var crystals2 = $('#diamond');
+    var crystals3 = $('#yellowThingy');
+    var crystals4 = $('#emerald');
 
-    diamond.on("click", function() {
-      totalScoreDom.text(restart += diamondGuess);
-    });
+    crystals.attr('pointValue', rubyGuess);
+    crystals2.attr('pointValue2', diamondGuess);
+    crystals3.attr('pointValue3', yellowGuess);
+    crystals4.attr('pointValue4', emeraldGuess);
 
-    yellowThingy.on("click", function() {
-      totalScoreDom.text(restart += yellowGuess);
-    });
 
-    emerald.on("click", function() {
-      totalScoreDom.text(restart += emeraldGuess);
-    });
+    ruby.on('click', function() {
+      var crystalPointVal = ($(this).attr('pointValue'));
+      crystalPointVal = parseInt(crystalPointVal);
+      counter += crystalPointVal;
+      totalScoreDom.text(counter);
+      if (counter === targetNumber) {
+        alert('You Won!')
+        winPoints++;
+        wins.text(winPoints);
+      } else if (counter > targetNumber) {
+        alert('You Loss!')
+        lossPoints++;
+        losses.text(lossPoints);
+      }
+    })
 
-    function gameOver() {
-      totalScoreDom = parseInt(totalScoreDom);
-    }
+    diamond.on('click', function() {
+      var crystalPointVal2 = ($(this).attr('pointValue2'));
+      crystalPointVal2 = parseInt(crystalPointVal2);
+      counter += crystalPointVal2;
+      totalScoreDom.text(counter);
+      if (counter === targetNumber) {
+        alert('You Won!')
+        winPoints++;
+        wins.text(winPoints);
+      } else if (counter > targetNumber) {
+        alert('You Loss!')
+        lossPoints++;
+        losses.text(lossPoints);
+      }
 
-    gameOver()
+    })
 
-    if (typeof totalScoreDom == 'number') {
-      alert('true')
-    } else {
-      alert('false')
-    };
+    yellowThingy.on('click', function() {
+      var crystalPointVal3 = ($(this).attr('pointValue3'));
+      crystalPointVal3 = parseInt(crystalPointVal3);
+      counter += crystalPointVal3;
+      totalScoreDom.text(counter);
+      if (counter === targetNumber) {
+        alert('You Won!')
+        winPoints++;
+        wins.text(winPoints);
+      } else if (counter > targetNumber) {
+        alert('You Loss!')
+        lossPoints++;
+        losses.text(lossPoints);
+      }
+
+    })
+
+    emerald.on('click', function() {
+      var crystalPointVal4 = ($(this).attr('pointValue4'));
+      crystalPointVal4 = parseInt(crystalPointVal4);
+      counter += crystalPointVal4;
+      totalScoreDom.text(counter);
+      if (counter === targetNumber) {
+        alert('You Won!')
+        winPoints++;
+        wins.text(winPoints);
+      } else if (counter > targetNumber) {
+        alert('You Loss!')
+        lossPoints++;
+        losses.text(lossPoints);
+      }
+    })
+
+
+
   }
 
 
@@ -89,6 +140,7 @@ $(document).ready(function() {
   // function creates a new game after the user clicks on the reset button.
   function newGame() {
     resetGame.on('click', function() {
+
       var computerNum = [19, 25, 33, 38, 45, 50, 53, 61, 69, 72, 75, 84, 86, 94, 99, 105, 111, 120];
       var computerGuess = computerNum[Math.floor(Math.random() * computerNum.length)];
       var computerNumDom = $('#random-number');
@@ -115,6 +167,8 @@ $(document).ready(function() {
       var pointsForWin = 1;
       var pointsForLosses = 1;
       var restart = 0;
+      var counter = 0;
+      var targetNumber = computerGuess
 
       totalScoreDom.text(restart);
       wins.text(restart);
@@ -125,30 +179,85 @@ $(document).ready(function() {
       yellowNumDom.text(yellowGuess);
       emeraldNumDom.text(emeraldGuess);
 
-      ruby.on("click", function() {
-        totalScoreDom.text(restart += rubyGuess);
+      var crystals = $('#ruby');
+      var crystals2 = $('#diamond');
+      var crystals3 = $('#yellowThingy');
+      var crystals4 = $('#emerald');
 
-      });
+      crystals.attr('pointValue', rubyGuess);
+      crystals2.attr('pointValue2', diamondGuess);
+      crystals3.attr('pointValue3', yellowGuess);
+      crystals4.attr('pointValue4', emeraldGuess);
 
-      diamond.on("click", function() {
-        totalScoreDom.text(restart += diamondGuess);
-      });
 
-      yellowThingy.on("click", function() {
-        totalScoreDom.text(restart += yellowGuess);
-      });
+      ruby.on('click', function() {
+        var crystalPointVal = ($(this).attr('pointValue'));
+        crystalPointVal = parseInt(crystalPointVal);
+        counter += crystalPointVal;
+        totalScoreDom.text(counter);
+        if (counter === targetNumber) {
+          alert('You Won!')
+          winPoints++;
+          wins.text(winPoints);
+        } else if (counter > targetNumber) {
+          alert('You Loss!')
+          lossPoints++;
+          losses.text(lossPoints);
+        }
+      })
 
-      emerald.on("click", function() {
-        totalScoreDom.text(restart += emeraldGuess);
-      });
+      diamond.on('click', function() {
+        var crystalPointVal2 = ($(this).attr('pointValue2'));
+        crystalPointVal2 = parseInt(crystalPointVal2);
+        counter += crystalPointVal2;
+        totalScoreDom.text(counter);
+        if (counter === targetNumber) {
+          alert('You Won!')
+          winPoints++;
+          wins.text(winPoints);
+        } else if (counter > targetNumber) {
+          alert('You Loss!')
+          lossPoints++;
+          losses.text(lossPoints);
+        }
 
-      // if (totalScoreDom === computerGuess) {
-      //   wins.text(restart++);
-      //   alert('You matched the Computer Number!');
-      // } else if (totalScoreDom.value > computerGuess) {
-      //   losses.text(restart++);
-      //   alert('You went over! :-(');
-      // }
+      })
+
+      yellowThingy.on('click', function() {
+        var crystalPointVal3 = ($(this).attr('pointValue3'));
+        crystalPointVal3 = parseInt(crystalPointVal3);
+        counter += crystalPointVal3;
+        totalScoreDom.text(counter);
+        if (counter === targetNumber) {
+          alert('You Won!')
+          winPoints++;
+          wins.text(winPoints);
+        } else if (counter > targetNumber) {
+          alert('You Loss!')
+          lossPoints++;
+          losses.text(lossPoints);
+        }
+
+      })
+
+      emerald.on('click', function() {
+        var crystalPointVal4 = ($(this).attr('pointValue4'));
+        crystalPointVal4 = parseInt(crystalPointVal4);
+        counter += crystalPointVal4;
+        totalScoreDom.text(counter);
+        if (counter === targetNumber) {
+          alert('You Won!')
+          winPoints++;
+          wins.text(winPoints);
+        } else if (counter > targetNumber) {
+          alert('You Loss!')
+          lossPoints++;
+          losses.text(lossPoints);
+        }
+      })
+
+
+
     })
   }
 
