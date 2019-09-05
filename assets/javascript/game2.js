@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  // Declaring global variables.
+  // Declaring global variables. Setting the random numbers as global variables but then I reset them inside the playGame function so they can be assigned their random numbers.
   var ruby = $('#ruby');
   var diamond = $('#diamond');
   var yellowThingy = $('#yellowThingy');
@@ -17,15 +17,15 @@ $(document).ready(function() {
   var start = 0;
   var counter = 0;
   var isGameOver = false;
-  var computerGuess = 0
-  var rubyNum = 0
-  var rubyGuess = 0
-  var diamondNum = 0
-  var diamondGuess = 0
-  var yellowNum = 0
-  var yellowGuess = 0
-  var emeraldNum = 0
-  var emeraldGuess = 0
+  var computerGuess = 0;
+  var rubyNum = 0;
+  var rubyGuess = 0;
+  var diamondNum = 0;
+  var diamondGuess = 0;
+  var yellowNum = 0;
+  var yellowGuess = 0;
+  var emeraldNum = 0;
+  var emeraldGuess = 0;
 
   function playGame() {
     // Using our friend math.floor-math.round to have the computer select a random number for the user to try and match.
@@ -59,7 +59,7 @@ $(document).ready(function() {
     emeraldNumDom.text(emeraldGuess);
   }
 
-  // Function to run when gem is clicked.
+  // Function to run when gems are clicked. Each gem's point value is added to the counter and if the counter matches the computerGuess, they win. Go over they lose. Wins and losses are incremented and the DOM elememnts are updated. I then call the reset function in each click function.
 
   ruby.on('click', function() {
     counter += rubyGuess;
@@ -72,8 +72,7 @@ $(document).ready(function() {
       wins.text(winPoints);
       totalScoreDom.text(counter);
       isGameOver = true;
-      playGame()
-
+      reset()
 
     } else if (counter > computerGuess) {
       alert('You Loss!')
@@ -82,7 +81,7 @@ $(document).ready(function() {
       losses.text(lossPoints);
       totalScoreDom.text(counter);
       isGameOver = true;
-      playGame()
+      reset()
     }
   })
 
@@ -97,7 +96,7 @@ $(document).ready(function() {
       wins.text(winPoints);
       totalScoreDom.text(counter);
       isGameOver = true;
-      playGame()
+      reset()
 
     } else if (counter > computerGuess) {
       alert('You Loss!')
@@ -106,7 +105,7 @@ $(document).ready(function() {
       losses.text(lossPoints);
       totalScoreDom.text(counter);
       isGameOver = true;
-      playGame()
+      reset()
     }
   })
 
@@ -121,7 +120,7 @@ $(document).ready(function() {
       wins.text(winPoints);
       totalScoreDom.text(counter);
       isGameOver = true;
-      playGame()
+      reset()
 
     } else if (counter > computerGuess) {
       alert('You Loss!')
@@ -130,7 +129,7 @@ $(document).ready(function() {
       losses.text(lossPoints);
       totalScoreDom.text(counter);
       isGameOver = true;
-      playGame()
+      reset()
     }
   })
 
@@ -145,7 +144,7 @@ $(document).ready(function() {
       wins.text(winPoints);
       totalScoreDom.text(counter);
       isGameOver = true;
-      playGame()
+      reset()
 
 
     } else if (counter > computerGuess) {
@@ -155,10 +154,11 @@ $(document).ready(function() {
       losses.text(lossPoints);
       totalScoreDom.text(counter);
       isGameOver = true;
-      playGame()
+      reset()
     }
   })
 
+  //Function resets the game if variable isGameOver changes from false to true. The gem clicks changes that variable. The reset function calls and the playgame function
   function reset() {
     if (isGameOver = true) {
       playGame()
