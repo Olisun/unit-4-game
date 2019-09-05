@@ -3,6 +3,8 @@
 ## Page preview: 
 ![](assets/images/screen-shot.png)
 
+## Page-preview for "Cheat-Mode" section. Turned off for deployment
+![](assets/images/cheat-mode.png)
 
 ## About the project:
 
@@ -17,10 +19,18 @@ We had to build a game where the user clicks on one of 4 gems, each assigned wit
 
 ## Methodology:
 
-I created sepearate arrays for the random number shown to the user as well as the gems. Using our friend math.floor-math.round, I got the random numbers for the game target and the point values for each gem. From their, I mapped the random numbers to their respective fields. My logic is detailed in the comments in the game2.js. 
+I used math.floor-math.random to generate the random numbers for the computer guess and the gems. The gems were pretty strait forward but the computer guess was tricky because the random number has to be btw 19 and 120. I looked up methods on-line for that and found several copde snippets, however, I didn't want to just copy-paste other peoples' snippets for this. I want top try an come up with one myself. Till then, I went the long way which is to create an array of numbers btw 19-120 and have the method choose from the array. If I can come up with my own formula, I will update and push up to GH.
 
-The original game.js had to be refactored in a big way because I ran into major bugs with the score counts. They were not adding up correctly so I went back and reviewed the class jQuery resources from last week. I realized that the numbers were most likely string values. I started a new js file to refactor the game code. 
+I made a function top generate the numbers to start the game and another function to reset the game when the game over conditions are met. 
 
-I built the page structure in HTML by taking separate screen-shots of the gems plus the back ground from the screen-shot given to us in the homework instructions. I used the gem screen-shots to create buttons for the gems. I used css to place the images accordingly on the page.
+I built the page structure in HTML by taking separate screen-shots of the gems plus the background from the screen-shot given to us in the homework instructions. I used the gem screen-shots to create buttons for the gems. I used css to place the images accordingly on the page.
 
+I also made a cheat-mode for developement so I can see the random numbers for the gem. It's turned off but If you want to see the gem point values, just go to the css file and comment out the display: none;
+
+.num-test {
+  margin-top: 75px;
+  display: none;
+}
+
+The second js file called gameTest is used for testing.
 
