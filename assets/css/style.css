@@ -133,12 +133,14 @@
 
 .num-test {
   margin-top: 75px;
+  display: none;
 }
 
 #ruby-cheat {
   width: 45px;
   margin: 0;
   float: left;
+  display: none;
 }
 
 #diamond-cheat {
